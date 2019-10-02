@@ -1456,6 +1456,7 @@ function run() {
             if (!pr) {
                 throw new Error("Event payload missing `pull_request`");
             }
+            core.info(JSON.stringify(pr.labels));
             const client = new github.GitHub(token);
             core.debug(`Creating approving review for pull request #${pr.number}`);
             yield client.pulls.createReview({
