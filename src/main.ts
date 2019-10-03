@@ -13,8 +13,8 @@ async function run() {
     const client = new github.GitHub(token);
     core.debug(`Creating approving review for pull request #${pr.number}`);
     await client.pulls.createReview({
-      owner: "git-actions[bot]",
-      repo: "git-actions[bot]",
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
       pull_number: pr.number,
       event: "APPROVE"
     });
